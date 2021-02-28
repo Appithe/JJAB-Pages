@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 4</title>
+</head>
+<body>
+    <h1>API estatica de google</h1>
+
+    <button onclick="getUbication()">Click me!</button>
+
+    <div id="mapa"></div>
+
+    <script>
+        function getUbication() {
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+                coords.innerHTML = "Activa las funciones de geolocalizacion"
+            }
+        }
+
+        function showPosition(position) {
+            var coords = position.coords.latitude + "," + position.coords.longitude;
+            console.log(coords);
+
+            var url = "https://maps.googleapis.com/maps/api/staticmap?center=" + coords + "&zoom=18&size=800x800&key=AIzaSyBu2P2vV-3vhTjGaiPjAKRwG6_STvvVh1Y";
+
+            var mapa = document.getElementById("mapa");
+            mapa.innerHTML = "<img src=" + url + ">";
+        }
+    </script>
+</body>
+</html>
