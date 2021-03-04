@@ -1,2 +1,2 @@
-# JJAB-Pages
+# Practicas-Geo
 pagina de las practicas para sistemas geo-referenciados
