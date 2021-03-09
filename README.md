@@ -1,2 +1,5 @@
 # Practicas-Geo
-pagina de las practicas para sistemas geo-referenciados
+
+_Pagina de las practicas para sistemas geo-referenciados._
+
+**Practicas**: https://appithe.github.io/Practicas-Geo/.
