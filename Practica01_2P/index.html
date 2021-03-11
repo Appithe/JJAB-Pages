@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 1 segundo parcial</title>
+</head>
+<body>
+    <div id="paises"></div>
+
+    <script>
+        var paises = document.getElementById("paises");
+
+        // fetch('https://sistemasgeo.com/fetch/datos.json')
+        fetch('https://corona.lmao.ninja/v3/covid-19/countries')
+        .then( function(response) {
+            response.json().then( function(datos) {
+                datos.forEach(dato => {
+                    console.log(dato);
+
+                    let nombre = document.createElement("p");
+                    nombre.textContent = "Pais: " + dato.country + ", casos: " + dato.cases;
+                    paises.appendChild(nombre)
+                });
+            });
+        });
+    </script>
+</body>
+</html>
