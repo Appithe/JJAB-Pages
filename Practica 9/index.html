@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 9</title>
+</head>
+<body>
+    
+    <div id="mapa"></div>
+
+    <script>
+
+        var coordenadas = {
+            lat: 0,
+            lng: 0
+        };
+
+        var propiedades = {
+            center: coordenadas,
+            zoom: 2
+        };
+
+        function obtenerMarcadores() {
+            const markers = [
+                {
+                    name: "Mexico",
+                    Latitud: "23.634501",
+                    Longitud: "-102.552784"
+                }, {
+                    name: "Brasil",
+                    Latitud: "-14.235004",
+                    Longitud: "-51.92528"
+                }, {
+                    name: "Argentina",
+                    Latitud: "-38.416097",
+                    Longitud: "-63.616672"
+                }
+            ];
+
+            return markers;
+        }
+
+        function iniciaMapa() {
+            const mapa = new google.maps.Map(document.getElementById('mapa'), propiedades);
+            const marcadores = obtenerMarcadores();
+
+            console.log(marcadores);
+
+            for(propiedad in marcadores) {
+                let marcador = new google.masp.Markers({
+                    map: mapa,
+                    postion: new google.maps.LatLng(propiedad.Latitud, propiedad.Longitud),
+                    title: marcador.name
+                });
+            }
+        }
+
+    </script>
+
+    <script async 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu2P2vV-3vhTjGaiPjAKRwG6_STvvVh1Y&callback=iniciaMapa"></script>
+</body>
+</html>
