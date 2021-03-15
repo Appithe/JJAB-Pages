@@ -26,16 +26,16 @@
             const markers = [
                 {
                     name: "Mexico",
-                    Latitud: "23.634501",
-                    Longitud: "-102.552784"
+                    latitude: "23.634501",
+                    longitude: "-102.552784"
                 }, {
                     name: "Brasil",
-                    Latitud: "-14.235004",
-                    Longitud: "-51.92528"
+                    latitude: "-14.235004",
+                    longitude: "-51.92528"
                 }, {
                     name: "Argentina",
-                    Latitud: "-38.416097",
-                    Longitud: "-63.616672"
+                    latitude: "-38.416097",
+                    longitude: "-63.616672"
                 }
             ];
 
@@ -43,23 +43,28 @@
         }
 
         function iniciaMapa() {
-            const mapa = new google.maps.Map(document.getElementById('mapa'), propiedades);
+            const map = new google.maps.Map(document.getElementById('mapa'), propiedades);
             const marcadores = obtenerMarcadores();
 
             console.log(marcadores);
 
-            for(propiedad in marcadores) {
-                let marcador = new google.masp.Markers({
-                    map: mapa,
-                    postion: new google.maps.LatLng(propiedad.Latitud, propiedad.Longitud),
-                    title: marcador.name
-                });
+            try {
+                for(marcador in marcadores) {
+                    let marker = new google.maps.Marker({
+                        map: map,
+                        position: new google.maps.LatLng(marcador.latitude, marcador.longitude),
+                        title: marcador.name
+                    });
+                }
+            } catch (e) {
+                console.log(e);
             }
+
         }
 
     </script>
 
-    <script async 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu2P2vV-3vhTjGaiPjAKRwG6_STvvVh1Y&callback=iniciaMapa"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa"></script>
 </body>
 </html>
