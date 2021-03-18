@@ -2,4 +2,4 @@
 
 _Pagina de las practicas para sistemas geo-referenciados._
 
-**Practicas**: https://appithe.github.io/Practicas-Geo/.
+**Practicas**: https://appithe.github.io/Practicas-Geo/HomePage/index.html
