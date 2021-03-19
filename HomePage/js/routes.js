@@ -49,5 +49,10 @@ const routes = [
         route: "../Practica 10/index.html",
         description: "Mapa de casos de covid-19 en los paises",
         image: ""
+    }, {
+        name: "Practica 11",
+        route: "../Practica 11/index.html",
+        description: "Uso de Clustering para agrupar los marcadores y cambio del tipo de vista en el mapa",
+        image: "./img/p11.png"
     },
 ]
