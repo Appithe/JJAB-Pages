@@ -5,29 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Obtencion de coordenadas</h1>
-    <button onclick="getLoaction()">Click me!</button>
-    <p id="demo"></p>
+    <div class="containe-fluid text-center">
+        <h1>Obtencion de coordenadas</h1>
+        <button class="btn btn-primary" onclick="getLoaction()">Obtener Informacion</button>
+        <p id="demo" class="p-3"></p>
+    </div>
 
-    <script>
-        var coords = document.getElementById("demo");
-
-        function getLoaction() {
-            if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            }
-            else {
-                coords.innerHTML = "Activa las funciones de geolocalizacion"
-            }
-        }
-
-        function showPosition(position) {
-            coords.innerHTML = "Latitude: " + position.coords.latitude + "<br> Longitude: " + position.coords.longitude;
-        }
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
 </body>
 </html>

@@ -6,19 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica 5</title>
-
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-    <style>
-        body {
-            background-color: #efefef;
-        }
-
-        #map {
-            width: 100%;
-            height: 600px;
-        }
-    </style>
 </head>
 
 <body>
@@ -26,66 +15,12 @@
     <div class="container-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 p-3">
                     <div id="map"></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        var informacion = "<h1>Universidad DeLaSalle Bajío AC.</h1>"
-        informacion +=
-            "<p><strong>Dirección: </strong> Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto, México.</p>"
-        informacion += "<p><strong>Teléfono: </strong>477 710 8500.</p>"
-
-        function iniciaMapa() {
-
-            var propiedades = {
-                center: {
-                    lat: 21.152639,
-                    lng: -101.711598
-                },
-                zoom: 14,
-                mapId: 'c4cae189d2b34e37'
-            };
-
-            const mapa = document.getElementById("map")
-            const map = new google.maps.Map(mapa, propiedades)
-
-            if (navigator.geolocation) {
-
-                navigator.geolocation.getCurrentPosition(position => {
-
-                    let posicion = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    }
-
-                    let propiedadesMarcador = {
-                        position: posicion,
-                        map,
-                        title: "Marcardor"
-                    }
-
-                    const marcador = new google.maps.Marker(propiedadesMarcador);
-
-                    map.setCenter(posicion)
-
-                    const infowindow = new google.maps.InfoWindow({
-                        content: informacion
-                    })
-
-                    marcador.addListener("click", () => {
-                        infowindow.open(map, marcador);
-                    })
-
-                })
-
-            }
-
-        }
-    </script>
 
     <!-- Bootstrap 5 beta -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
@@ -93,7 +28,7 @@
     <!-- Google Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZKDApuGtUvBAGTzfy_tGN4Bnc1xavnGw&map_ids=c4cae189d2b34e37&callback=iniciaMapa" async defer></script>
 
-
+    <script src="./index.js"></script>
 </body>
 
 </html>
