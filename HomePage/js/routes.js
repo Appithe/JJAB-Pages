@@ -47,5 +47,9 @@ const routes = [
         name: "Practica 12",
         route: "../Practica 12/index.html",
         description: "Cambio de idioma a un mapa"
+    }, {
+        name: "Practica 13",
+        route: "../Practica 13/index.html",
+        description: "Cambio de color a un mapa"
     },
 ]
