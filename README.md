@@ -3,3 +3,5 @@
 _Pagina de las practicas para sistemas geo-referenciados._
 
 **Practicas**: https://appithe.github.io/Practicas-Geo/HomePage/index.html
+
+**Google my maps**: https://www.google.com/maps/d/u/0/embed?mid=1ZPy5AZ1Qq8iJc-aB4YXoKvmrLRrv2RBI
