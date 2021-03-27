@@ -53,9 +53,9 @@ const routes = [
         description: "Cambio de color a un mapa"
     }, {
         name: "Practica 14",
-        route: "https://www.google.com/maps/d/u/0/embed?mid=1ZPy5AZ1Qq8iJc-aB4YXoKvmrLRrv2RBI",
+        route: "../Practica 14/index.html",
         description: "Uso de google my maps"
-    }, , {
+    }, {
         name: "Practica 15",
         route: "../Practica 15/index.html",
         description: "Uso de watchPosition para cambiar la ubicacion del marcador"
