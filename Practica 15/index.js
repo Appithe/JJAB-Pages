@@ -18,6 +18,12 @@ function iniciaMapa() {
         anchor: new google.maps.Point(0,0)
     }
 
+    var marker = new google.maps.Marker({
+        position: coordenadas,
+        icon: icono,
+        map: map
+    });
+
     var watchId = null;
 
     const btnWatch = document.getElementById('btnWatch');
@@ -45,12 +51,6 @@ function iniciaMapa() {
     }
 
     var success = (position) => {
-        var marker = new google.maps.Marker({
-            position: coordenadas,
-            icon: icono,
-            map: map
-        });
-
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
 
