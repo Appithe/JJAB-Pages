@@ -59,5 +59,10 @@ const routes = [
         name: "Practica 15",
         route: "../Practica 15/index.html",
         description: "Uso de watchPosition para cambiar la ubicacion del marcador"
+    }, {
+        name: "Practica 16",
+        route: "../Practica 16/index.html",
+        description: "Cotroles de mapa"
     },
+    
 ]

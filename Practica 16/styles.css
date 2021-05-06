@@ -1,0 +1,16 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background-color:darkslategrey;
+}
+#mapa1, #mapa2, #mapa3, #mapa4, #mapa5, #mapa6 {
+    width: 100%;
+    height: 340px;
+}
+h1, h3 {
+    color:honeydew;
+}
+p {
+    color:honeydew;
+    font-size: 140%;
+}
