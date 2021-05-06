@@ -10,7 +10,7 @@ const idioma = ulrParams.get("idioma");
 document.getElementById("idioma").value = idioma;
 
 var urlApi = document.createElement("script");
-urlApi.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAZKDApuGtUvBAGTzfy_tGN4Bnc1xavnGw&map_ids=c4cae189d2b34e37&callback=iniciaMapa&language=" + idioma;
+urlApi.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&map_ids=c4cae189d2b34e37&callback=iniciaMapa&language=" + idioma;
 document.head.appendChild(urlApi)
 
 function iniciaMapa() {
