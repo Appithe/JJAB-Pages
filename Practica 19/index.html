@@ -45,7 +45,24 @@
                 .then((response) => {
                     response.json().then((municipios) => {
 
+                        var html = `
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Municipio</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Habitantes</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+                        var datos = document.getElementById('datos');
+
+                        var vuelos = [];
+
                         municipios.forEach(municipio => {
+
+                            vuelos.push(municipio.coordenadas)
+
                             var circulo = new google.maps.Circle({
                                 strokeColor: '#FF0000',
                                 strokeOpacity: 0.8,
@@ -54,9 +71,30 @@
                                 fillOpacity: 0.35,
                                 map: map,
                                 center: municipio.coordenadas,
-                                radius: Math.sqrt(municipio.habitantes)*10
+                                radius: Math.sqrt(municipio.habitantes) * 10
+                            });
+
+                            var trazo = new google.maps.Polyline({
+                                path: vuelos,
+                                geodesic: true,
+                                strokeColor: '#cccccc',
+                                strokeOpacity: 0.5,
+                                strokeWeight: 1
                             })
+
+                            vuelos.setMap(map);
+                            
+                            tabla = `
+                            <tr>
+                                <th scope="row">${municipio.nombre}</th>
+                                <td>${municipio.estado}</td>
+                                <td>${municipio.habitantes}</td>
+                            </tr>`;
                         });
+
+                        tabla += `</tbody></table>`;
+
+                        datos.innerHTML = tabla;
 
                     });
                 })
