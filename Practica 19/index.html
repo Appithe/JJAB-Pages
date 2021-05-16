@@ -29,8 +29,8 @@
     <script>
         function iniciaMapa() {
             var coordenadas = {
-                lat: 0,
-                lng: 0
+                lat: 19.4978,
+                lng: -99.1269
             }
 
             var propiedades = {
@@ -41,7 +41,7 @@
 
             var map = new google.maps.Map(document.getElementById('map'), propiedades);
 
-            fetch('https://sistemasgeo.com/municipios.json')
+            fetch('municipios.json')
                 .then((response) => {
                     response.json().then((municipios) => {
 
