@@ -55,6 +55,7 @@
                                 </tr>
                             </thead>
                             <tbody>`;
+
                         var datos = document.getElementById('datos');
 
                         var vuelos = [];
@@ -74,7 +75,7 @@
                                 radius: Math.sqrt(municipio.habitantes) * 10
                             });
 
-                            tabla = `
+                            html += `
                             <tr>
                                 <th scope="row">${municipio.nombre}</th>
                                 <td>${municipio.estado}</td>
@@ -92,9 +93,9 @@
 
                         trazo.setMap(map);
 
-                        tabla += `</tbody></table>`;
+                        html += `</tbody></table>`;
 
-                        datos.innerHTML = tabla;
+                        datos.innerHTML = html;
 
                     });
                 });
