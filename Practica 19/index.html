@@ -74,16 +74,6 @@
                                 radius: Math.sqrt(municipio.habitantes) * 10
                             });
 
-                            var trazo = new google.maps.Polyline({
-                                path: vuelos,
-                                geodesic: true,
-                                strokeColor: '#cccccc',
-                                strokeOpacity: 0.5,
-                                strokeWeight: 1
-                            })
-
-                            trazo.setMap(map);
-                            
                             tabla = `
                             <tr>
                                 <th scope="row">${municipio.nombre}</th>
@@ -92,12 +82,22 @@
                             </tr>`;
                         });
 
+                        var trazo = new google.maps.Polyline({
+                            path: vuelos,
+                            geodesic: true,
+                            strokeColor: '#cccccc',
+                            strokeOpacity: 0.5,
+                            strokeWeight: 1
+                        })
+
+                        trazo.setMap(map);
+
                         tabla += `</tbody></table>`;
 
                         datos.innerHTML = tabla;
 
                     });
-                })
+                });
         }
     </script>
 
