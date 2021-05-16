@@ -1,11 +1,10 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyCrXFL_mMbyLRVSC9Fn6_lfsDjMx54EzlE",
-    authDomain: "proyecto1-935aa.firebaseapp.com",
-    databaseURL: "https://proyecto1-935aa.firebaseio.com",
-    projectId: "proyecto1-935aa",
-    storageBucket: "proyecto1-935aa.appspot.com",
-    messagingSenderId: "514873387506",
-    appId: "1:514873387506:web:fa75cac073ad42be0b636b"
+    apiKey: "AIzaSyDJBSSpn2GWF04CYK5aajEcPClwRuqxOi0",
+    authDomain: "sis-geo.firebaseapp.com",
+    projectId: "sis-geo",
+    storageBucket: "sis-geo.appspot.com",
+    messagingSenderId: "409501078421",
+    appId: "1:409501078421:web:2fab08e4674b7c83f31c9c"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -21,7 +20,7 @@ function renderProductos(doc) {
     let codigo = document.createElement('span');
     let borrar = document.createElement('button');
 
-    borrar.className = "btn btn-danger m-3"; 
+    borrar.className = "btn btn-danger m-3";
 
     nombre.textContent = doc.data().nombre + ' ';
     codigo.textContent = doc.data().codigo + ' ';
@@ -36,14 +35,15 @@ function renderProductos(doc) {
 
     borrar.addEventListener('click', (e) => {
         let id = e.target.parentElement.getAttribute('id');
-        db.collection('productos').doc(id).delete;
+        db.collection('producto').doc(id).delete();
     })
 }
+
 
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    db.collection('productos').add({
+    db.collection('producto').add({
         nombre: formulario.nombre.value,
         codigo: formulario.codigo.value
     });
@@ -52,13 +52,13 @@ formulario.addEventListener('submit', (e) => {
     formulario.codigo.value = '';
 });
 
-db.collection('productos').onSnapshot( snapshot => {
-    let changes = snapshot.doChanges();
+db.collection('producto').onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
 
-    changes.forEach( change => {
-        if(change.type == 'added'){
+    changes.forEach(change => {
+        if (change.type == 'added') {
             renderProductos(change.doc)
-        } else if(change.type = 'removed'){
+        } else if (change.type = 'removed') {
             let valorid = document.getElementById(change.doc.id);
             lista.removeChild(valorid);
         }
