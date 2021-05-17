@@ -79,5 +79,10 @@ const routes = [
         route: "../Practica 19/index.html",
         description: "mapas con shapes"
     },
+    {
+        name: "Practica 3 firebase",
+        route: "../Firebase/Practica 3/index.html",
+        description: "mapas con shapes"
+    },
     
 ]

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticacion con firebase</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">DLS Eats</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#miCuenta">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#IngresarModal">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#RegistroModal">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="salir">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal Ingresar -->
+    <div class="modal fade" id="IngresarModal" tabindex="-1" aria-labelledby="IngresarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="IngresarModalLabel">Ingresar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formaIngresar">
+                        <div class="row">
+                            <div class="col-12 m-2">
+                                <input type="email" ss="from-control" id="correo" placeholder="Correo" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 m-2">
+                                <input type="password" class="from-control" id="pass" placeholder="Contraseña" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary">Ingresar</button>
+                                <p class="error text-danger"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registro -->
+    <div class="modal fade" id="RegistroModal" tabindex="-1" aria-labelledby="RegistroModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="RegistroModalLabel">Registro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formaRegistro">
+                        <div class="row">
+                            <div class="col-12 m-2">
+                                <input type="email" ss="from-control" id="rcorreo" placeholder="Correo" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 m-2">
+                                <input type="password" class="from-control" id="rpass" placeholder="Contraseña" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary">Registro</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal miCuenta -->
+    <div class="modal fade" id="miCuenta" tabindex="-1" aria-labelledby="miCuentaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="miCuentaLabel">Mi cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Info de la cuenta
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row text-center" id='lstPlatillos'>
+            <div class="col-4 col-md-4">
+                <img src="./imagenes/pizzapeperoni.jpg" class="img-thumbnail">
+                <p>Pizza de peperoni</p>
+                <p>$89</p>
+            </div>
+            <div class="col-4 col-md-4">
+                <img src="./imagenes/pizzajamon.jpg" class="img-thumbnail">
+                <p>Pizza de jamon con piña</p>
+                <p>$139</p>
+            </div>
+            <div class="col-4 col-md-4">
+                <img src="./imagenes/pizzacarnes.jpg" class="img-thumbnail">
+                <p>Pizza de carnes frias</p>
+                <p>$149</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/autenticacion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCGrH62XqmWcZnU_eUDDTnq5M_vARvXRPE",
+            authDomain: "sis-geo-auth.firebaseapp.com",
+            projectId: "sis-geo-auth",
+            storageBucket: "sis-geo-auth.appspot.com",
+            messagingSenderId: "706666695015",
+            appId: "1:706666695015:web:303878bf5dc5378ef487c2"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+
+        const db = firebase.firestore();
+    </script>
+
+</body>
+
+</html>
