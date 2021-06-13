@@ -1,3 +1,15 @@
+auth.onAuthStateChanged(user => {
+    if (user) {
+        db.collection('platillos').onSnapshot(snapshot => {
+            cargarPlatillos(snapshot.docs);
+        });
+        configurarMenu(user);
+    } else {
+        cargarPlatillos([]);
+        configurarMenu();
+    }
+});
+
 const formaIngresar = document.getElementById('formaIngresar');
 
 formaIngresar.addEventListener('submit', (e) => {
@@ -34,7 +46,7 @@ function mensajeError(code) {
             mensaje = 'Contraseña debil';
             break;
         default:
-            mensaje = 'Ocurrio un error';
+            mensaje = code;
     }
 
     return mensaje;
@@ -48,4 +60,52 @@ salir.addEventListener('click', (e) => {
     auth.signOut().then(() => {
         console.log('signOut');
     });
-})
+});
+
+const formaRegistro = document.getElementById('formaRegistro');
+
+formaRegistro.addEventListener('submit', (e) => {
+    e.preventDefault;
+
+    const correo = formaRegistro['rcorreo'].value;
+    const pass = formaRegistro['rpass'].value;
+
+    auth.signInWithEmailAndPassword(correo, pass).then(cred => {
+        return db.collection('usuarios').doc(cred.user.uid).set({
+            nombre: formaRegistro['rnombre'].value,
+            telefono: formaRegistro['rtelefono'].value,
+            direccion: formaRegistro['rdireccion'].value
+        });
+    }).then(() => {
+        $('#RegistroModal').modal('hide');
+        formaRegistro.reset();
+        formaRegistro.querySelector('.error').innerHTML = '';
+    }).catch(err => {
+        formaRegistro.querySelector('.error').innerHTML = mensajeError(err.code);
+        console.log(err.code);
+    });
+});
+
+ingresarConGoogle = () => {
+    var provider = new firebase.aut.GoogleAuthProvider();
+
+    firebase.auth().signWithPopup(provider).then(result => {
+        var token = result.credential.accessToken;
+        console.log(token);
+
+        var user = result.user;
+
+        let html = `
+            <p>Nombre: ${user.displayName}</p>
+            <p>Correo: ${user.email}</p>
+            <img src="${user.photoURL}" width="50px">
+        `;
+
+        infoCuenta.innerHTML = html;
+        $('#IngresarModal').modal('hide');
+        formaIngresar.reset();
+        formaIngresar.querySelector('.error') = '';
+    }).catch(error => {
+        console.log(error);
+    });
+}

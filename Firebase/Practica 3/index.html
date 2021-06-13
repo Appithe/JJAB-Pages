@@ -24,16 +24,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item logged-in">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#miCuenta">Cuenta</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item logged-out">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#IngresarModal">Ingresar</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item logged-out">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#RegistroModal">Registro</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item logged-in">
                         <a class="nav-link" href="#" id="salir">Salir</a>
                     </li>
                 </ul>
@@ -68,6 +68,11 @@
                             </div>
                         </div>
                     </form>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <span onclick="ingresarConGoogle()" class="btn btn-danger">Ingresar con google</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -88,17 +93,42 @@
                     <form id="formaRegistro">
                         <div class="row">
                             <div class="col-12 m-2">
-                                <input type="email" ss="from-control" id="rcorreo" placeholder="Correo" required>
+                                <input type="text" class="from-control" id="rnombre" placeholder="Ingresa tu nombre"
+                                    required>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-12 m-2">
-                                <input type="password" class="from-control" id="rpass" placeholder="Contraseña" required>
+                                <input type="email" class="from-control" id="rcorreo" placeholder="Correo" required>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-12 m-2">
+                                <input type="password" class="from-control" id="rpass" placeholder="Contraseña"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 m-2">
+                                <input type="number" step="any" class="from-control" id="rtelefono"
+                                    placeholder="Ingresa tu telefono" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 m-2">
+                                <input type="text" class="from-control" id="rdireccion"
+                                    placeholder="Ingresa tu direccion" required>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-12 text-center">
-                                <button class="btn btn-primary">Registro</button>
+                                <input type="submit" class="btn btn-primary" value="Registro">
+                                <p class="error text-danger"></p>
                             </div>
                         </div>
                     </form>
@@ -118,8 +148,8 @@
                     <h5 class="modal-title" id="miCuentaLabel">Mi cuenta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    Info de la cuenta
+                <div class="modal-body infoCuenta">
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -130,26 +160,10 @@
 
     <div class="container">
         <div class="row text-center" id='lstPlatillos'>
-            <div class="col-4 col-md-4">
-                <img src="./imagenes/pizzapeperoni.jpg" class="img-thumbnail">
-                <p>Pizza de peperoni</p>
-                <p>$89</p>
-            </div>
-            <div class="col-4 col-md-4">
-                <img src="./imagenes/pizzajamon.jpg" class="img-thumbnail">
-                <p>Pizza de jamon con piña</p>
-                <p>$139</p>
-            </div>
-            <div class="col-4 col-md-4">
-                <img src="./imagenes/pizzacarnes.jpg" class="img-thumbnail">
-                <p>Pizza de carnes frias</p>
-                <p>$149</p>
-            </div>
+            
         </div>
     </div>
 
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/autenticacion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
@@ -169,6 +183,7 @@
             messagingSenderId: "706666695015",
             appId: "1:706666695015:web:303878bf5dc5378ef487c2"
         };
+
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
@@ -176,6 +191,9 @@
 
         const db = firebase.firestore();
     </script>
+
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/autenticacion.js"></script>
 
 </body>
 
