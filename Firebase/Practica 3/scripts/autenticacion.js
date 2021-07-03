@@ -87,9 +87,9 @@ formaRegistro.addEventListener('submit', (e) => {
 });
 
 ingresarConGoogle = () => {
-    var provider = new firebase.aut.GoogleAuthProvider();
+    var provider = new firebase.auth.GoogleAuthProvider();
 
-    firebase.auth().signWithPopup(provider).then(result => {
+    firebase.auth().signInWithPopup(provider).then(result => {
         var token = result.credential.accessToken;
         console.log(token);
 
